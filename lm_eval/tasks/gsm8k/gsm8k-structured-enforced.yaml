@@ -1,0 +1,42 @@
+tag:
+  - math_word_problems
+task: gsm8k-structured-enforced
+dataset_path: gsm8k
+dataset_name: main
+output_type: generate_until
+training_split: train
+fewshot_split: train
+test_split: test
+doc_to_text: >
+  system_message: 'You are an expert in solving grade school math tasks. You will be presented with a grade-school math word problem and be asked to solve it. Before answering you should reason about the problem (using the "reasoning" field in the JSON response described below). You will always repond with JSON in the format described below {"reasoning": <reasoning about the answer>, "answer": <final answer>}. The "reasoning" field will contain your reasoning about the sequence of events, and the "answer" will contain the single letter representing the correct choice you are presented with.'
+
+  demo:
+    demo_pool:
+      - input: "Question: There are 15 trees in the grove. Grove workers will plant trees in the grove today. After they are done, there will be 21 trees. How many trees did the grove workers plant today?"
+        output: '{"reasoning": "There are 15 trees originally. Then there were 21 trees after some more were planted. So there must have been 21 - 15 = 6.", "answer": 6}'
+      - input: "Question: If there are 3 cars in the parking lot and 2 more cars arrive, how many cars are in the parking lot?"
+        output: '{"reasoning": "There are originally 3 cars. 2 more cars arrive. 3 + 2 = 5.", "answer": 5}'
+      - input: "Question: Leah had 32 chocolates and her sister had 42. If they ate 35, how many pieces do they have left in total?"
+        output: '{"reasoning": "Originally, Leah had 32 chocolates. Her sister had 42. So in total they had 32 + 42 = 74. After eating 35, they had 74 - 35 = 39.","answer": 39'
+  input: {{question}}
+  output:
+doc_to_target: "{{answer}}"
+metric_list:
+  - metric: !function metrics.json_answer_exact_match
+    aggregation: mean
+    higher_is_better: true
+  - metric: !function ../jsonschema_bench/metrics.json_validity
+    aggregation: mean
+    higher_is_better: True
+  - metric: !function metrics.schema_compliance #TODO: not woking yet
+    aggregation: mean
+    higher_is_better: True
+generation_kwargs:
+  do_sample: false
+  temperature: 0.0
+  grammar_file_path: ./lm_eval/tasks/gsm8k/gsm8k_grammar.json
+  grammar_type: json
+repeats: 1
+num_fewshot: 0
+metadata:
+  version: 3.0
