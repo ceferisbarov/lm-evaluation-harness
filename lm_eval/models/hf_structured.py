@@ -1,7 +1,5 @@
 import logging
-from typing import Union
 
-import transformers
 import xgrammar as xgr
 
 from lm_eval.api.registry import register_model
@@ -13,6 +11,8 @@ from lm_eval.models.utils import (
 
 eval_logger = logging.getLogger(__name__)
 
+ALL_GRAMMAR_TYPES = ("json",)
+
 
 @register_model("hf-structured")
 class HFStructuredLM(HFLM):
@@ -20,29 +20,32 @@ class HFStructuredLM(HFLM):
     An abstracted Hugging Face model class for structured LMs.
     """
 
-    def __init__(
-        self,
-        pretrained: Union[str, transformers.PreTrainedModel],
-        grammar_file_path: str,
-        **kwargs,
-    ):
-        super().__init__(pretrained, **kwargs)
-        # TODO: default json for now
-        self._create_compiled_grammar()
+    def _get_logits_processor(self, grammar_file_path, grammar_type):
+        if grammar_type not in ALL_GRAMMAR_TYPES:
+            raise ValueError(
+                f"Got invalid grammar_type '{grammar_type}', must be in '{','.join(ALL_GRAMMAR_TYPES)}'"
+            )
 
-    def _create_compiled_grammar(self):
+        if grammar_type == "json":
+            with open(grammar_file_path, "r") as f:
+                grammar_str = f.read()
+
         tokenizer_info = xgr.TokenizerInfo.from_huggingface(
             self.tokenizer, vocab_size=self.config.vocab_size
         )
-        compiler = xgr.GrammarCompiler(tokenizer_info, max_threads=8)
-        self.compiled_grammar: xgr.CompiledGrammar = (
-            compiler.compile_builtin_json_grammar()
-        )
+        compiler = xgr.GrammarCompiler(tokenizer_info)
+        compiled_grammar = compiler.compile_json_schema(grammar_str)
+        return xgr.contrib.hf.LogitsProcessor(compiled_grammar)
 
-    def _get_logits_processor(self):
-        return xgr.contrib.hf.LogitsProcessor(self.compiled_grammar)
-
-    def _model_generate(self, context, max_length, stop, **generation_kwargs):
+    def _model_generate(
+        self,
+        context,
+        max_length,
+        stop,
+        grammar_file_path,
+        grammar_type,
+        **generation_kwargs,
+    ):
         # temperature = 0.0 if not set
         # if do_sample is false and temp==0.0:
         # remove temperature, as do_sample=False takes care of this
@@ -61,12 +64,14 @@ class HFStructuredLM(HFLM):
             self.tokenizer, stop, context.shape[1], context.shape[0]
         )
 
+        logits_processor = self._get_logits_processor(grammar_file_path, grammar_type)
+
         return self.model.generate(
             input_ids=context,
             max_length=max_length,
             stopping_criteria=stopping_criteria,
             pad_token_id=self.tokenizer.pad_token_id,
             use_cache=True,
-            logits_processor=[self._get_logits_processor()],
+            logits_processor=[logits_processor],
             **generation_kwargs,
         )
