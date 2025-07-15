@@ -1,0 +1,18 @@
+{
+  "properties": {
+    "reasoning": {
+      "title": "Reasoning",
+      "type": "string"
+    },
+    "answer": {
+      "title": "Answer",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "reasoning",
+    "answer"
+  ],
+  "title": "Response",
+  "type": "object"
+}
