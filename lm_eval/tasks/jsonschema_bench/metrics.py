@@ -98,6 +98,29 @@ def schema_compliance(references: list[str], predictions: list[str]) -> bool:
     return schema_conform
 
 
+def gsm8k_schema_compliance(references: list[str], predictions: list[str]) -> bool:
+    assert len(predictions) == 1, (
+        "Currently, we don't support pass@k for JSON schema validation."
+    )
+    with open("./lm_eval/tasks/gsm8k/gsm8k_grammar.json", "r") as f:
+        json_schema = json.load(f)
+
+    prediction = predictions[0]  # Since predictions is a list of lists
+
+    try:
+        json_obj = json.loads(prediction.strip().strip("```").strip("json"))
+    except json.JSONDecodeError:
+        return False
+
+    try:
+        schema_conform = schema_conform_with_format_checker(json_obj, json_schema)
+    except Exception as e:
+        eval_logger.error(f"Error: {e}")
+        return False
+
+    return schema_conform
+
+
 def json_validity(references: list[str], predictions: list[str]) -> bool:
     assert len(predictions) == 1, (
         "Currently, we don't support pass@k for JSON schema validation."

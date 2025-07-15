@@ -28,14 +28,12 @@ metric_list:
   - metric: !function ../jsonschema_bench/metrics.json_validity
     aggregation: mean
     higher_is_better: True
-  - metric: !function metrics.schema_compliance #TODO: not woking yet
+  - metric: !function ../jsonschema_bench/metrics.gsm8k_schema_compliance
     aggregation: mean
     higher_is_better: True
 generation_kwargs:
   do_sample: false
   temperature: 0.0
-  # grammar_file_path: ./lm_eval/tasks/gsm8k/gsm8k_grammar.json
-  # grammar_type: json
 repeats: 1
 num_fewshot: 0
 metadata:
