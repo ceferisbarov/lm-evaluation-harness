@@ -13,13 +13,16 @@ doc_to_text: >
   demo:
     demo_pool:
       - input: "Question: There are 15 trees in the grove. Grove workers will plant trees in the grove today. After they are done, there will be 21 trees. How many trees did the grove workers plant today?"
-        output: '{"reasoning": "There are 15 trees originally. Then there were 21 trees after some more were planted. So there must have been 21 - 15 = 6.", "answer": 6}'
+        output: {"reasoning": "There are 15 trees originally. Then there were 21 trees after some more were planted. So there must have been 21 - 15 = 6.", "answer": 6}
       - input: "Question: If there are 3 cars in the parking lot and 2 more cars arrive, how many cars are in the parking lot?"
-        output: '{"reasoning": "There are originally 3 cars. 2 more cars arrive. 3 + 2 = 5.", "answer": 5}'
+        output: {"reasoning": "There are originally 3 cars. 2 more cars arrive. 3 + 2 = 5.", "answer": 5}
       - input: "Question: Leah had 32 chocolates and her sister had 42. If they ate 35, how many pieces do they have left in total?"
-        output: '{"reasoning": "Originally, Leah had 32 chocolates. Her sister had 42. So in total they had 32 + 42 = 74. After eating 35, they had 74 - 35 = 39.","answer": 39'
+        output: {"reasoning": "Originally, Leah had 32 chocolates. Her sister had 42. So in total they had 32 + 42 = 74. After eating 35, they had 74 - 35 = 39.","answer": 39'}
+
   input: {{question}}
+
   output:
+
 doc_to_target: "{{answer}}"
 metric_list:
   - metric: !function metrics.json_answer_exact_match
