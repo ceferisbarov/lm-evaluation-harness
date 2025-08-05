@@ -1,16 +1,54 @@
+import ipaddress
+import json
 import logging
 import math
 import os
 import random
 import re
 import string
+import uuid
 from collections.abc import Iterable
-from typing import Callable, List, Optional, Sequence, TypeVar
+from typing import Any, Callable, Dict, List, Optional, Sequence, TypeVar
 
 import numpy as np
 import sacrebleu
+from lark import Lark
+from lark import exceptions as lark_exceptions
+
+
+# check if jsonschema is installed
+try:
+    import jsonschema
+    from jsonschema import Draft202012Validator, FormatChecker, ValidationError
+except ImportError as e:
+    raise ImportError(
+        "jsonschema is not installed. Please install it using 'pip install jsonschema[format]'"
+    ) from e
 
 from lm_eval.api.registry import register_aggregation, register_metric
+
+
+eval_logger = logging.getLogger(__name__)
+
+
+# Initialize the FormatChecker
+format_checker = FormatChecker()
+
+
+# Add custom format checkers
+@format_checker.checks("ipv4")
+def ipv4_check(value):
+    ipaddress.IPv4Address(value)
+
+
+@format_checker.checks("ipv6")
+def ipv6_check(value):
+    ipaddress.IPv6Address(value)
+
+
+@format_checker.checks("uuid")
+def uuid_check(value):
+    uuid.UUID(value)
 
 
 T = TypeVar("T")
@@ -307,6 +345,117 @@ def mean_stderr(arr):
 )
 def bypass(items):
     return None
+
+
+def is_json_schema_valid(schema: dict):
+    """
+    Check if a JSON schema is valid.
+
+    :param schema: A JSON schema.
+    :return: True if the schema is valid, False otherwise.
+    """
+    try:
+        # Check if the schema is valid
+        jsonschema.Draft202012Validator.check_schema(schema)
+        return True
+    except jsonschema.SchemaError:
+        return False
+
+
+def schema_conform_with_format_checker(
+    instance: Dict[str, Any], schema: Dict[str, Any]
+) -> bool:
+    """
+    Validate a JSON instance against a schema with enhanced format checking.
+
+    :param schema: The JSON schema to validate against.
+    :param instance: The JSON instance to validate.
+    :raises ValidationError: If the validation fails.
+    """
+    # first check if the schema is valid
+    if not is_json_schema_valid(schema):
+        raise ValidationError("The JSON schema is invalid.")
+    validator = Draft202012Validator(schema, format_checker=format_checker)
+    try:
+        validator.validate(instance)
+    except ValidationError as e:
+        raise ValidationError(e.message)
+    return True
+
+
+@register_metric(
+    metric="json_validity",
+    higher_is_better=True,
+    output_type=["generate_until"],
+    aggregation="mean",
+)
+def json_validity(references: list[str], predictions: list[str], strip: True) -> bool:
+    assert len(predictions) == 1, (
+        "Currently, we don't support pass@k for JSON schema validation."
+    )
+    prediction = predictions[0]  # Since predictions is a list of lists
+
+    if strip:
+        prediction = prediction.strip().strip("```").strip("json").strip()
+
+    try:
+        json.loads(prediction)
+    except json.JSONDecodeError:
+        return False
+    return True
+
+
+@register_metric(
+    metric="grammar_compliance",
+    higher_is_better=True,
+    output_type=["generate_until"],
+    aggregation="mean",
+)
+def grammar_compliance(
+    references: list[str],
+    predictions: list[str],
+    grammar_file_path: str,
+    grammar_type: str,
+) -> bool:
+    assert len(references) == 1, (
+        "We only have one reference for this task, which is the JSON schema."
+    )
+    assert len(predictions) == 1, (
+        "Currently, we don't support pass@k for JSON schema validation."
+    )
+
+    prediction = predictions[0]  # Since predictions is a list of lists
+
+    with open(grammar_file_path, "r") as f:
+        grammar_str = f.read()
+
+    if grammar_type == "json":
+        json_schema = json.loads(grammar_str.strip())
+        try:
+            json_obj = json.loads(prediction.strip().strip("```").strip("json"))
+        except json.JSONDecodeError:
+            return False
+
+        try:
+            schema_conform = schema_conform_with_format_checker(json_obj, json_schema)
+        except Exception as e:
+            eval_logger.error(f"Error: {e}")
+            return False
+
+        return schema_conform
+
+    if grammar_type == "regex":
+        return bool(re.fullmatch(grammar_str, prediction.strip()))
+
+    if grammar_type == "ebnf":
+        try:
+            parser = Lark(grammar_str, parser="lalr")
+            parser.parse(prediction.strip())
+            return True
+        except lark_exceptions.LarkError:
+            return False
+
+    raise ValueError(f"Unknown grammar type: {grammar_type}")
 
 
 @register_metric(
