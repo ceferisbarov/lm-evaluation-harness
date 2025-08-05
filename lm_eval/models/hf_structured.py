@@ -4,9 +4,6 @@ import xgrammar as xgr
 
 from lm_eval.api.registry import register_model
 from lm_eval.models.huggingface import HFLM
-from lm_eval.models.utils import (
-    stop_sequences_criteria,
-)
 
 
 eval_logger = logging.getLogger(__name__)
@@ -65,17 +62,12 @@ class HFStructuredLM(HFLM):
 
         if do_sample is False and generation_kwargs.get("temperature") == 0.0:
             generation_kwargs.pop("temperature")
-        # build stopping criteria
-        stopping_criteria = stop_sequences_criteria(
-            self.tokenizer, stop, context.shape[1], context.shape[0]
-        )
 
         logits_processor = self._get_logits_processor(grammar_file_path, grammar_type)
 
         return self.model.generate(
             input_ids=context,
             max_length=max_length,
-            stopping_criteria=stopping_criteria,
             pad_token_id=self.tokenizer.pad_token_id,
             use_cache=True,
             logits_processor=[logits_processor],
