@@ -12,8 +12,6 @@ from typing import Any, Callable, Dict, List, Optional, Sequence, TypeVar
 
 import numpy as np
 import sacrebleu
-from lark import Lark
-from lark import exceptions as lark_exceptions
 
 
 # check if jsonschema is installed
@@ -416,6 +414,7 @@ def grammar_compliance(
     predictions: list[str],
     grammar_file_path: str,
     grammar_type: str,
+    tokenizer: str = None,
 ) -> bool:
     assert len(references) == 1, (
         "We only have one reference for this task, which is the JSON schema."
@@ -427,10 +426,10 @@ def grammar_compliance(
     prediction = predictions[0]  # Since predictions is a list of lists
 
     with open(grammar_file_path, "r") as f:
-        grammar_str = f.read()
+        grammar_str = f.read().strip()
 
     if grammar_type == "json":
-        json_schema = json.loads(grammar_str.strip())
+        json_schema = json.loads(grammar_str)
         try:
             json_obj = json.loads(prediction.strip().strip("```").strip("json"))
         except json.JSONDecodeError:
@@ -447,12 +446,23 @@ def grammar_compliance(
     if grammar_type == "regex":
         return bool(re.fullmatch(grammar_str, prediction.strip()))
 
-    if grammar_type == "ebnf":
+    if grammar_type == "gbnf":
         try:
-            parser = Lark(grammar_str, parser="lalr")
-            parser.parse(prediction.strip())
-            return True
-        except lark_exceptions.LarkError:
+            import xgrammar as xgr
+            from transformers import AutoTokenizer
+
+            tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3.2-1B")
+
+            tokenizer_info = xgr.TokenizerInfo.from_huggingface(
+                tokenizer, vocab_size=tokenizer.vocab_size
+            )
+            grammar_compiler = xgr.GrammarCompiler(tokenizer_info)
+            compiled_grammar = grammar_compiler.compile_grammar(grammar_str)
+            matcher = xgr.GrammarMatcher(compiled_grammar)
+
+            return matcher.accept_string(prediction.strip())
+
+        except Exception:
             return False
 
     raise ValueError(f"Unknown grammar type: {grammar_type}")

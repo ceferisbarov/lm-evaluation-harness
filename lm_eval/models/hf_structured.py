@@ -8,7 +8,7 @@ from lm_eval.models.huggingface import HFLM
 
 eval_logger = logging.getLogger(__name__)
 
-ALL_GRAMMAR_TYPES = ("ebnf", "json", "regex")
+ALL_GRAMMAR_TYPES = ("gbnf", "json", "regex")
 
 
 @register_model("hf-structured")
@@ -31,7 +31,7 @@ class HFStructuredLM(HFLM):
         with open(grammar_file_path, "r") as f:
             grammar_str = f.read().strip()
 
-        if grammar_type == "ebnf":
+        if grammar_type == "gbnf":
             compiled_grammar = compiler.compile_grammar(grammar_str)
         elif grammar_type == "json":
             compiled_grammar = compiler.compile_json_schema(grammar_str)
