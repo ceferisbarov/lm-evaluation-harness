@@ -1,9 +1,11 @@
+import json
 import logging
 
 import xgrammar as xgr
 
 from lm_eval.api.registry import register_model
 from lm_eval.models.huggingface import HFLM
+from lm_eval.recorders import XGrammarDecodingRecorder
 
 
 eval_logger = logging.getLogger(__name__)
@@ -38,7 +40,12 @@ class HFStructuredLM(HFLM):
         elif grammar_type == "regex":
             compiled_grammar = compiler.compile_regex(grammar_str)
 
-        return xgr.contrib.hf.LogitsProcessor(compiled_grammar)
+        logits_processor = xgr.contrib.hf.LogitsProcessor(compiled_grammar)
+        decoding_recorder = XGrammarDecodingRecorder(
+            self.tokenizer, compiled_grammar, save_log=True
+        )
+
+        return [logits_processor, decoding_recorder]
 
     def _model_generate(
         self,
@@ -47,6 +54,7 @@ class HFStructuredLM(HFLM):
         stop,
         grammar_file_path,
         grammar_type,
+        decoding_record_file_path,
         **generation_kwargs,
     ):
         # temperature = 0.0 if not set
@@ -63,13 +71,21 @@ class HFStructuredLM(HFLM):
         if do_sample is False and generation_kwargs.get("temperature") == 0.0:
             generation_kwargs.pop("temperature")
 
-        logits_processor = self._get_logits_processor(grammar_file_path, grammar_type)
+        logits_processors = self._get_logits_processor(grammar_file_path, grammar_type)
 
-        return self.model.generate(
+        output = self.model.generate(
             input_ids=context,
             max_length=max_length,
             pad_token_id=self.tokenizer.pad_token_id,
             use_cache=True,
-            logits_processor=[logits_processor],
+            logits_processor=logits_processors,
             **generation_kwargs,
         )
+
+        decoding_history = logits_processors[1].get_decoding_history()
+        if decoding_history:
+            with open(decoding_record_file_path, "a") as f:
+                json.dump(decoding_history, f, ensure_ascii=False)
+                f.write("\n")
+
+        return output
