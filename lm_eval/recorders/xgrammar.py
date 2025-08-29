@@ -1,6 +1,5 @@
 import torch
 import torch.nn.functional as F
-import xgrammar
 from transformers.generation.logits_process import LogitsProcessor
 
 
@@ -11,20 +10,15 @@ class XGrammarDecodingRecorder(LogitsProcessor):
     decoding tree structure.
     """
 
-    def __init__(self, tokenizer, compiled_grammar, save_log=False):
+    def __init__(self, logits_processor, tokenizer, save_log=False):
         self.tokenizer = tokenizer
 
         # XGrammar processor
-        self.xgr_processor = xgrammar.contrib.hf.LogitsProcessor(compiled_grammar)
+        self.xgr_processor = logits_processor
 
         # Generation Log
         self.save_log = save_log
         self.history = []
-
-        # Store the compiled grammar for token decoding
-        self.compiled_grammar = compiled_grammar
-        # Store the tokenizer info
-        self.tokenizer_info = compiled_grammar.tokenizer_info
 
         # Store previous step's scores for updating probabilities
         self.prev_scores = None

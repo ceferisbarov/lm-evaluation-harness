@@ -42,10 +42,10 @@ class HFStructuredLM(HFLM):
 
         logits_processor = xgr.contrib.hf.LogitsProcessor(compiled_grammar)
         decoding_recorder = XGrammarDecodingRecorder(
-            self.tokenizer, compiled_grammar, save_log=True
+            logits_processor, self.tokenizer, save_log=True
         )
 
-        return [logits_processor, decoding_recorder]
+        return [decoding_recorder]
 
     def _model_generate(
         self,
@@ -82,7 +82,7 @@ class HFStructuredLM(HFLM):
             **generation_kwargs,
         )
 
-        decoding_history = logits_processors[1].get_decoding_history()
+        decoding_history = logits_processors[0].get_decoding_history()
         if decoding_history:
             with open(decoding_record_file_path, "a") as f:
                 json.dump(decoding_history, f, ensure_ascii=False)

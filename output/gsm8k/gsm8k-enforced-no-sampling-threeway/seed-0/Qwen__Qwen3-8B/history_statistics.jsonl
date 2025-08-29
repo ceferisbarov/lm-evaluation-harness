@@ -1,0 +1,167 @@
+[
+  {
+    "total_steps": 120,
+    "total_interventions": 0,
+    "intervention_rate": 0.0,
+    "mean_accepted_ratio": 0.8394977709912949,
+    "mean_top1_prob": 0.9347233017285664,
+    "mean_top1_prob_masked": 0.9347233017285664,
+    "min_accepted_ratio": 6.581718618365627e-06,
+    "max_accepted_ratio": 0.968407750631845,
+    "mean_rank_shift": 0.0
+  },
+  {
+    "total_steps": 150,
+    "total_interventions": 0,
+    "intervention_rate": 0.0,
+    "mean_accepted_ratio": 0.8845979008705421,
+    "mean_top1_prob": 0.9507467943429947,
+    "mean_top1_prob_masked": 0.9507467943429947,
+    "min_accepted_ratio": 6.581718618365627e-06,
+    "max_accepted_ratio": 0.968407750631845,
+    "mean_rank_shift": 0.0
+  },
+  {
+    "total_steps": 82,
+    "total_interventions": 0,
+    "intervention_rate": 0.0,
+    "mean_accepted_ratio": 0.838655749789385,
+    "mean_top1_prob": 0.9066577541028581,
+    "mean_top1_prob_masked": 0.9066577541028581,
+    "min_accepted_ratio": 6.581718618365627e-06,
+    "max_accepted_ratio": 0.968407750631845,
+    "mean_rank_shift": 0.0
+  },
+  {
+    "total_steps": 83,
+    "total_interventions": 0,
+    "intervention_rate": 0.0,
+    "mean_accepted_ratio": 0.8285815968169222,
+    "mean_top1_prob": 0.9327764529061605,
+    "mean_top1_prob_masked": 0.9327764529061605,
+    "min_accepted_ratio": 6.581718618365627e-06,
+    "max_accepted_ratio": 0.968407750631845,
+    "mean_rank_shift": 0.0
+  },
+  {
+    "total_steps": 1024,
+    "total_interventions": 0,
+    "intervention_rate": 0.0,
+    "mean_accepted_ratio": 0.9636843005648763,
+    "mean_top1_prob": 0.9893887671642005,
+    "mean_top1_prob_masked": 0.9893887671642005,
+    "min_accepted_ratio": 1.9745155855096883e-05,
+    "max_accepted_ratio": 0.968407750631845,
+    "mean_rank_shift": 0.0
+  },
+  {
+    "total_steps": 1024,
+    "total_interventions": 0,
+    "intervention_rate": 0.0,
+    "mean_accepted_ratio": 0.9636843005648763,
+    "mean_top1_prob": 0.9838638119690586,
+    "mean_top1_prob_masked": 0.9838638119690586,
+    "min_accepted_ratio": 1.9745155855096883e-05,
+    "max_accepted_ratio": 0.968407750631845,
+    "mean_rank_shift": 0.0
+  },
+  {
+    "total_steps": 136,
+    "total_interventions": 0,
+    "intervention_rate": 0.0,
+    "mean_accepted_ratio": 0.8830722359104762,
+    "mean_top1_prob": 0.907335955868749,
+    "mean_top1_prob_masked": 0.907335955868749,
+    "min_accepted_ratio": 6.581718618365627e-06,
+    "max_accepted_ratio": 0.968407750631845,
+    "mean_rank_shift": 0.0
+  },
+  {
+    "total_steps": 77,
+    "total_interventions": 0,
+    "intervention_rate": 0.0,
+    "mean_accepted_ratio": 0.8176860523638114,
+    "mean_top1_prob": 0.9041324323647982,
+    "mean_top1_prob_masked": 0.9041324323647982,
+    "min_accepted_ratio": 6.581718618365627e-06,
+    "max_accepted_ratio": 0.968407750631845,
+    "mean_rank_shift": 0.0
+  },
+  {
+    "total_steps": 127,
+    "total_interventions": 0,
+    "intervention_rate": 0.0,
+    "mean_accepted_ratio": 0.8618137081340509,
+    "mean_top1_prob": 0.8734701869525309,
+    "mean_top1_prob_masked": 0.8734701869525309,
+    "min_accepted_ratio": 6.581718618365627e-06,
+    "max_accepted_ratio": 0.968407750631845,
+    "mean_rank_shift": 0.0
+  },
+  {
+    "total_steps": 1024,
+    "total_interventions": 0,
+    "intervention_rate": 0.0,
+    "mean_accepted_ratio": 0.9636843005648763,
+    "mean_top1_prob": 0.9910766895918641,
+    "mean_top1_prob_masked": 0.9910766895918641,
+    "min_accepted_ratio": 1.9745155855096883e-05,
+    "max_accepted_ratio": 0.968407750631845,
+    "mean_rank_shift": 0.0
+  },
+  {
+    "total_steps": 62,
+    "total_interventions": 0,
+    "intervention_rate": 0.0,
+    "mean_accepted_ratio": 0.7812211253634807,
+    "mean_top1_prob": 0.8702085330601661,
+    "mean_top1_prob_masked": 0.8702085330601661,
+    "min_accepted_ratio": 6.581718618365627e-06,
+    "max_accepted_ratio": 0.968407750631845,
+    "mean_rank_shift": 0.0
+  },
+  {
+    "total_steps": 88,
+    "total_interventions": 0,
+    "intervention_rate": 0.0,
+    "mean_accepted_ratio": 0.8365262646473156,
+    "mean_top1_prob": 0.9107879552651535,
+    "mean_top1_prob_masked": 0.9107879552651535,
+    "min_accepted_ratio": 6.581718618365627e-06,
+    "max_accepted_ratio": 0.968407750631845,
+    "mean_rank_shift": 0.0
+  },
+  {
+    "total_steps": 1024,
+    "total_interventions": 0,
+    "intervention_rate": 0.0,
+    "mean_accepted_ratio": 0.9636843005648763,
+    "mean_top1_prob": 0.9937185155285988,
+    "mean_top1_prob_masked": 0.9937185155285988,
+    "min_accepted_ratio": 1.9745155855096883e-05,
+    "max_accepted_ratio": 0.968407750631845,
+    "mean_rank_shift": 0.0
+  },
+  {
+    "total_steps": 90,
+    "total_interventions": 0,
+    "intervention_rate": 0.0,
+    "mean_accepted_ratio": 0.8394569643358609,
+    "mean_top1_prob": 0.9123400078879462,
+    "mean_top1_prob_masked": 0.9123400078879462,
+    "min_accepted_ratio": 6.581718618365627e-06,
+    "max_accepted_ratio": 0.968407750631845,
+    "mean_rank_shift": 0.0
+  },
+  {
+    "total_steps": 1024,
+    "total_interventions": 0,
+    "intervention_rate": 0.0,
+    "mean_accepted_ratio": 0.9636843005648763,
+    "mean_top1_prob": 0.9870817726186942,
+    "mean_top1_prob_masked": 0.9870817726186942,
+    "min_accepted_ratio": 1.9745155855096883e-05,
+    "max_accepted_ratio": 0.968407750631845,
+    "mean_rank_shift": 0.0
+  }
+]

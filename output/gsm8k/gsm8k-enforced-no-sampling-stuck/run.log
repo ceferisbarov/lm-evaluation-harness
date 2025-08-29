@@ -6,94 +6,94 @@ The following values were not passed to `accelerate launch` and had defaults use
 	`--mixed_precision` was set to a value of `'no'`
 	`--dynamo_backend` was set to a value of `'no'`
 To avoid this warning pass in values for each of the problematic parameters or run `accelerate config`.
-[2025-08-28 11:36:22] INFO __main__.py:446: Selected Tasks: ['gsm8k-enforced-no-sampling-stuck']
-[2025-08-28 11:36:22] INFO evaluator.py:202: Setting random seed to 0 | Setting numpy seed to 0 | Setting torch manual seed to 0 | Setting fewshot manual seed to 0
-[2025-08-28 11:36:22] INFO __main__.py:446: Selected Tasks: ['gsm8k-enforced-no-sampling-stuck']
-[2025-08-28 11:36:22] INFO evaluator.py:240: Initializing hf-structured model, with arguments: {'pretrained': 'Qwen/Qwen3-8B'}
-[2025-08-28 11:36:22] INFO evaluator.py:202: Setting random seed to 0 | Setting numpy seed to 0 | Setting torch manual seed to 0 | Setting fewshot manual seed to 0
-[2025-08-28 11:36:22] INFO evaluator.py:240: Initializing hf-structured model, with arguments: {'pretrained': 'Qwen/Qwen3-8B'}
-[2025-08-28 11:36:22] INFO __main__.py:446: Selected Tasks: ['gsm8k-enforced-no-sampling-stuck']
-[2025-08-28 11:36:22] INFO evaluator.py:202: Setting random seed to 0 | Setting numpy seed to 0 | Setting torch manual seed to 0 | Setting fewshot manual seed to 0
-[2025-08-28 11:36:22] INFO evaluator.py:240: Initializing hf-structured model, with arguments: {'pretrained': 'Qwen/Qwen3-8B'}
-[2025-08-28 11:36:23] INFO huggingface.py:414: Model parallel was set to False, max memory was not set, and device map was set to {'': 'cuda:0'}
-[2025-08-28 11:36:24] INFO huggingface.py:414: Model parallel was set to False, max memory was not set, and device map was set to {'': 'cuda:1'}
-[2025-08-28 11:36:24] INFO huggingface.py:414: Model parallel was set to False, max memory was not set, and device map was set to {'': 'cuda:2'}
+[2025-08-29 06:53:40] INFO __main__.py:446: Selected Tasks: ['gsm8k-enforced-no-sampling-stuck']
+[2025-08-29 06:53:40] INFO __main__.py:446: Selected Tasks: ['gsm8k-enforced-no-sampling-stuck']
+[2025-08-29 06:53:40] INFO __main__.py:446: Selected Tasks: ['gsm8k-enforced-no-sampling-stuck']
+[2025-08-29 06:53:40] INFO evaluator.py:202: Setting random seed to 0 | Setting numpy seed to 0 | Setting torch manual seed to 0 | Setting fewshot manual seed to 0
+[2025-08-29 06:53:40] INFO evaluator.py:202: Setting random seed to 0 | Setting numpy seed to 0 | Setting torch manual seed to 0 | Setting fewshot manual seed to 0
+[2025-08-29 06:53:40] INFO evaluator.py:240: Initializing hf-structured model, with arguments: {'pretrained': 'Qwen/Qwen3-8B'}
+[2025-08-29 06:53:40] INFO evaluator.py:240: Initializing hf-structured model, with arguments: {'pretrained': 'Qwen/Qwen3-8B'}
+[2025-08-29 06:53:40] INFO evaluator.py:202: Setting random seed to 0 | Setting numpy seed to 0 | Setting torch manual seed to 0 | Setting fewshot manual seed to 0
+[2025-08-29 06:53:40] INFO evaluator.py:240: Initializing hf-structured model, with arguments: {'pretrained': 'Qwen/Qwen3-8B'}
+[2025-08-29 06:53:42] INFO huggingface.py:414: Model parallel was set to False, max memory was not set, and device map was set to {'': 'cuda:2'}
+[2025-08-29 06:53:42] INFO huggingface.py:414: Model parallel was set to False, max memory was not set, and device map was set to {'': 'cuda:0'}
+[2025-08-29 06:53:42] INFO huggingface.py:414: Model parallel was set to False, max memory was not set, and device map was set to {'': 'cuda:1'}
 
 Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]
 Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]
 Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]
-Loading checkpoint shards:  20%|██        | 1/5 [00:00<00:03,  1.26it/s]
-Loading checkpoint shards:  20%|██        | 1/5 [00:00<00:02,  1.34it/s]
-Loading checkpoint shards:  20%|██        | 1/5 [00:00<00:03,  1.22it/s]
-Loading checkpoint shards:  40%|████      | 2/5 [00:01<00:02,  1.25it/s]
-Loading checkpoint shards:  40%|████      | 2/5 [00:01<00:02,  1.28it/s]
-Loading checkpoint shards:  40%|████      | 2/5 [00:01<00:02,  1.22it/s]
-Loading checkpoint shards:  60%|██████    | 3/5 [00:02<00:01,  1.23it/s]
+Loading checkpoint shards:  20%|██        | 1/5 [00:00<00:03,  1.27it/s]
+Loading checkpoint shards:  20%|██        | 1/5 [00:00<00:03,  1.31it/s]
+Loading checkpoint shards:  20%|██        | 1/5 [00:00<00:03,  1.14it/s]
+Loading checkpoint shards:  40%|████      | 2/5 [00:01<00:02,  1.24it/s]
+Loading checkpoint shards:  40%|████      | 2/5 [00:01<00:02,  1.26it/s]
+Loading checkpoint shards:  40%|████      | 2/5 [00:01<00:02,  1.19it/s]
+Loading checkpoint shards:  60%|██████    | 3/5 [00:02<00:01,  1.25it/s]
 Loading checkpoint shards:  60%|██████    | 3/5 [00:02<00:01,  1.24it/s]
-Loading checkpoint shards:  60%|██████    | 3/5 [00:02<00:01,  1.23it/s]
-Loading checkpoint shards:  80%|████████  | 4/5 [00:03<00:00,  1.37it/s]
-Loading checkpoint shards:  80%|████████  | 4/5 [00:02<00:00,  1.38it/s]
-Loading checkpoint shards:  80%|████████  | 4/5 [00:03<00:00,  1.34it/s]
+Loading checkpoint shards:  60%|██████    | 3/5 [00:02<00:01,  1.21it/s]
+Loading checkpoint shards:  80%|████████  | 4/5 [00:03<00:00,  1.38it/s]
+Loading checkpoint shards:  80%|████████  | 4/5 [00:03<00:00,  1.35it/s]
+Loading checkpoint shards:  80%|████████  | 4/5 [00:03<00:00,  1.30it/s]
 Loading checkpoint shards: 100%|██████████| 5/5 [00:03<00:00,  1.84it/s]
-Loading checkpoint shards: 100%|██████████| 5/5 [00:03<00:00,  1.54it/s]
+Loading checkpoint shards: 100%|██████████| 5/5 [00:03<00:00,  1.52it/s]
 
-Loading checkpoint shards: 100%|██████████| 5/5 [00:03<00:00,  1.83it/s]
-Loading checkpoint shards: 100%|██████████| 5/5 [00:03<00:00,  1.56it/s]
+Loading checkpoint shards: 100%|██████████| 5/5 [00:03<00:00,  1.80it/s]
+Loading checkpoint shards: 100%|██████████| 5/5 [00:03<00:00,  1.53it/s]
 
-Loading checkpoint shards: 100%|██████████| 5/5 [00:03<00:00,  1.79it/s]
-Loading checkpoint shards: 100%|██████████| 5/5 [00:03<00:00,  1.51it/s]
-[2025-08-28 11:36:27] WARNING task.py:116: gsm8k-enforced-no-sampling-stuck: No `until` specified in `generation_kwargs`! Defaulting to the fewshot_delimiter='\n\n'
-[2025-08-28 11:36:27] WARNING task.py:116: gsm8k-enforced-no-sampling-stuck: No `until` specified in `generation_kwargs`! Defaulting to the fewshot_delimiter='\n\n'
-[2025-08-28 11:36:27] WARNING task.py:116: gsm8k-enforced-no-sampling-stuck: No `until` specified in `generation_kwargs`! Defaulting to the fewshot_delimiter='\n\n'
-[2025-08-28 11:36:29] INFO evaluator.py:305: gsm8k-enforced-no-sampling-stuck: Using gen_kwargs: {'do_sample': False, 'temperature': 0.0, 'max_new_tokens': 1024, 'grammar_file_path': './lm_eval/tasks/gsm8k/gsm8k_grammar.json', 'grammar_type': 'json', 'decoding_record_file_path': 'output/gsm8k/gsm8k-enforced-no-sampling-stuck/decoding_history.jsonl', 'until': ['\n\n']}
-[2025-08-28 11:36:29] INFO task.py:434: Building contexts for gsm8k-enforced-no-sampling-stuck on rank 2...
+Loading checkpoint shards: 100%|██████████| 5/5 [00:03<00:00,  1.75it/s]
+Loading checkpoint shards: 100%|██████████| 5/5 [00:03<00:00,  1.49it/s]
+[2025-08-29 06:53:45] WARNING task.py:116: gsm8k-enforced-no-sampling-stuck: No `until` specified in `generation_kwargs`! Defaulting to the fewshot_delimiter='\n\n'
+[2025-08-29 06:53:45] WARNING task.py:116: gsm8k-enforced-no-sampling-stuck: No `until` specified in `generation_kwargs`! Defaulting to the fewshot_delimiter='\n\n'
+[2025-08-29 06:53:45] WARNING task.py:116: gsm8k-enforced-no-sampling-stuck: No `until` specified in `generation_kwargs`! Defaulting to the fewshot_delimiter='\n\n'
+[2025-08-29 06:53:47] INFO evaluator.py:305: gsm8k-enforced-no-sampling-stuck: Using gen_kwargs: {'do_sample': False, 'temperature': 0.0, 'max_new_tokens': 1024, 'grammar_file_path': './lm_eval/tasks/gsm8k/gsm8k_grammar.json', 'grammar_type': 'json', 'decoding_record_file_path': 'output/gsm8k/gsm8k-enforced-no-sampling-stuck/decoding_history.jsonl', 'until': ['\n\n']}
+[2025-08-29 06:53:47] INFO task.py:434: Building contexts for gsm8k-enforced-no-sampling-stuck on rank 0...
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+100%|██████████| 2/2 [00:00<00:00, 849.48it/s]
+[2025-08-29 06:53:47] INFO evaluator.py:305: gsm8k-enforced-no-sampling-stuck: Using gen_kwargs: {'do_sample': False, 'temperature': 0.0, 'max_new_tokens': 1024, 'grammar_file_path': './lm_eval/tasks/gsm8k/gsm8k_grammar.json', 'grammar_type': 'json', 'decoding_record_file_path': 'output/gsm8k/gsm8k-enforced-no-sampling-stuck/decoding_history.jsonl', 'until': ['\n\n']}
+[2025-08-29 06:53:47] INFO task.py:434: Building contexts for gsm8k-enforced-no-sampling-stuck on rank 1...
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+100%|██████████| 2/2 [00:00<00:00, 836.94it/s]
+[2025-08-29 06:53:47] INFO evaluator.py:305: gsm8k-enforced-no-sampling-stuck: Using gen_kwargs: {'do_sample': False, 'temperature': 0.0, 'max_new_tokens': 1024, 'grammar_file_path': './lm_eval/tasks/gsm8k/gsm8k_grammar.json', 'grammar_type': 'json', 'decoding_record_file_path': 'output/gsm8k/gsm8k-enforced-no-sampling-stuck/decoding_history.jsonl', 'until': ['\n\n']}
+[2025-08-29 06:53:47] INFO task.py:434: Building contexts for gsm8k-enforced-no-sampling-stuck on rank 2...
 
   0%|          | 0/1 [00:00<?, ?it/s]
-100%|██████████| 1/1 [00:00<00:00, 779.90it/s]
-[2025-08-28 11:36:30] INFO evaluator.py:305: gsm8k-enforced-no-sampling-stuck: Using gen_kwargs: {'do_sample': False, 'temperature': 0.0, 'max_new_tokens': 1024, 'grammar_file_path': './lm_eval/tasks/gsm8k/gsm8k_grammar.json', 'grammar_type': 'json', 'decoding_record_file_path': 'output/gsm8k/gsm8k-enforced-no-sampling-stuck/decoding_history.jsonl', 'until': ['\n\n']}
-[2025-08-28 11:36:30] INFO task.py:434: Building contexts for gsm8k-enforced-no-sampling-stuck on rank 1...
+100%|██████████| 1/1 [00:00<00:00, 803.35it/s]
+[2025-08-29 06:53:48] INFO evaluator.py:574: Running generate_until requests
+[2025-08-29 06:53:48] INFO evaluator.py:574: Running generate_until requests
+[2025-08-29 06:53:48] INFO evaluator.py:574: Running generate_until requests
+Passed argument batch_size = auto. Detecting largest batch sizePassed argument batch_size = auto. Detecting largest batch size
 
-  0%|          | 0/2 [00:00<?, ?it/s]
-100%|██████████| 2/2 [00:00<00:00, 793.62it/s]
-[2025-08-28 11:36:30] INFO evaluator.py:305: gsm8k-enforced-no-sampling-stuck: Using gen_kwargs: {'do_sample': False, 'temperature': 0.0, 'max_new_tokens': 1024, 'grammar_file_path': './lm_eval/tasks/gsm8k/gsm8k_grammar.json', 'grammar_type': 'json', 'decoding_record_file_path': 'output/gsm8k/gsm8k-enforced-no-sampling-stuck/decoding_history.jsonl', 'until': ['\n\n']}
-[2025-08-28 11:36:30] INFO task.py:434: Building contexts for gsm8k-enforced-no-sampling-stuck on rank 0...
-
-  0%|          | 0/2 [00:00<?, ?it/s]
-100%|██████████| 2/2 [00:00<00:00, 835.35it/s]
-[2025-08-28 11:36:30] INFO evaluator.py:574: Running generate_until requests
-[2025-08-28 11:36:30] INFO evaluator.py:574: Running generate_until requests
-Passed argument batch_size = auto. Detecting largest batch size
 
 Running generate_until requests:   0%|          | 0/2 [00:00<?, ?it/s]Passed argument batch_size = auto. Detecting largest batch size
-[2025-08-28 11:36:30] INFO evaluator.py:574: Running generate_until requests
-Passed argument batch_size = auto. Detecting largest batch size
 Determined Largest batch size: 1
 Determined Largest batch size: 1
 Determined Largest batch size: 1
 The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Both `max_new_tokens` (=1024) and `max_length`(=823) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=1024) and `max_length`(=729) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
 Both `max_new_tokens` (=1024) and `max_length`(=742) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
 The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
-Both `max_new_tokens` (=1024) and `max_length`(=823) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
-The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
-Both `max_new_tokens` (=1024) and `max_length`(=729) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
-The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
-Both `max_new_tokens` (=1024) and `max_length`(=823) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
-
-Running generate_until requests:  50%|█████     | 1/2 [2:27:17<2:27:17, 8837.43s/it]The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
-Both `max_new_tokens` (=1024) and `max_length`(=739) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
-The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
 Both `max_new_tokens` (=1024) and `max_length`(=717) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Both `max_new_tokens` (=1024) and `max_length`(=823) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
 
-Running generate_until requests: 100%|██████████| 2/2 [2:54:32<00:00, 4600.94s/it]
-Running generate_until requests: 100%|██████████| 2/2 [2:54:32<00:00, 5236.41s/it]
+Running generate_until requests:  50%|█████     | 1/2 [2:25:57<2:25:57, 8757.09s/it]The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Both `max_new_tokens` (=1024) and `max_length`(=739) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+
+Running generate_until requests: 100%|██████████| 2/2 [2:52:58<00:00, 4559.84s/it]
+Running generate_until requests: 100%|██████████| 2/2 [2:52:58<00:00, 5189.43s/it]
 /home/jafar/lm-evaluation-harness/env/lib/python3.11/site-packages/torch/distributed/distributed_c10d.py:4807: UserWarning: No device id is provided via `init_process_group` or `barrier `. Using the current device set by the user.
   warnings.warn(  # warn only once
 /home/jafar/lm-evaluation-harness/env/lib/python3.11/site-packages/torch/distributed/distributed_c10d.py:4807: UserWarning: No device id is provided via `init_process_group` or `barrier `. Using the current device set by the user.
   warnings.warn(  # warn only once
 /home/jafar/lm-evaluation-harness/env/lib/python3.11/site-packages/torch/distributed/distributed_c10d.py:4807: UserWarning: No device id is provided via `init_process_group` or `barrier `. Using the current device set by the user.
   warnings.warn(  # warn only once
-[2025-08-28 16:30:45] INFO evaluation_tracker.py:209: Saving results aggregated
-[2025-08-28 16:30:45] INFO evaluation_tracker.py:298: Saving per-sample results for: gsm8k-enforced-no-sampling-stuck
+[2025-08-29 11:45:02] INFO evaluation_tracker.py:209: Saving results aggregated
+[2025-08-29 11:45:02] INFO evaluation_tracker.py:298: Saving per-sample results for: gsm8k-enforced-no-sampling-stuck
 hf-structured (pretrained=Qwen/Qwen3-8B), gen_kwargs: (None), limit: None, num_fewshot: None, batch_size: auto
 |             Tasks              |Version|Filter|n-shot|      Metric      |   |Value|   |Stderr|
 |--------------------------------|------:|------|-----:|------------------|---|----:|---|-----:|
@@ -101,4 +101,4 @@ hf-structured (pretrained=Qwen/Qwen3-8B), gen_kwargs: (None), limit: None, num_f
 |                                |       |none  |     0|json_answer_match |↑  |    0|±  |     0|
 |                                |       |none  |     0|json_validity     |↑  |    0|±  |     0|
 
-[rank0]:[W828 16:30:45.485267499 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[rank0]:[W829 11:45:03.131664156 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())

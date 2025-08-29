@@ -1,0 +1,128 @@
+The following values were not passed to `accelerate launch` and had defaults used instead:
+	`--num_processes` was set to a value of `3`
+		More than one GPU was found, enabling multi-GPU training.
+		If this was unintended please pass in `--num_processes=1`.
+	`--num_machines` was set to a value of `1`
+	`--mixed_precision` was set to a value of `'no'`
+	`--dynamo_backend` was set to a value of `'no'`
+To avoid this warning pass in values for each of the problematic parameters or run `accelerate config`.
+[2025-08-27 20:14:23] INFO __main__.py:446: Selected Tasks: ['gsm8k-enforced-no-sampling-threeway']
+[2025-08-27 20:14:23] INFO __main__.py:446: Selected Tasks: ['gsm8k-enforced-no-sampling-threeway']
+[2025-08-27 20:14:23] INFO evaluator.py:202: Setting random seed to 0 | Setting numpy seed to 0 | Setting torch manual seed to 0 | Setting fewshot manual seed to 0
+[2025-08-27 20:14:23] INFO evaluator.py:202: Setting random seed to 0 | Setting numpy seed to 0 | Setting torch manual seed to 0 | Setting fewshot manual seed to 0
+[2025-08-27 20:14:23] INFO evaluator.py:240: Initializing hf-structured model, with arguments: {'pretrained': 'Qwen/Qwen3-8B'}
+[2025-08-27 20:14:23] INFO evaluator.py:240: Initializing hf-structured model, with arguments: {'pretrained': 'Qwen/Qwen3-8B'}
+[2025-08-27 20:14:23] INFO __main__.py:446: Selected Tasks: ['gsm8k-enforced-no-sampling-threeway']
+[2025-08-27 20:14:23] INFO evaluator.py:202: Setting random seed to 0 | Setting numpy seed to 0 | Setting torch manual seed to 0 | Setting fewshot manual seed to 0
+[2025-08-27 20:14:23] INFO evaluator.py:240: Initializing hf-structured model, with arguments: {'pretrained': 'Qwen/Qwen3-8B'}
+[2025-08-27 20:14:24] INFO huggingface.py:414: Model parallel was set to False, max memory was not set, and device map was set to {'': 'cuda:1'}
+[2025-08-27 20:14:24] INFO huggingface.py:414: Model parallel was set to False, max memory was not set, and device map was set to {'': 'cuda:2'}
+[2025-08-27 20:14:25] INFO huggingface.py:414: Model parallel was set to False, max memory was not set, and device map was set to {'': 'cuda:0'}
+
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]
+Loading checkpoint shards:  20%|██        | 1/5 [00:00<00:03,  1.30it/s]
+Loading checkpoint shards:  20%|██        | 1/5 [00:00<00:03,  1.32it/s]
+Loading checkpoint shards:  20%|██        | 1/5 [00:00<00:03,  1.31it/s]
+Loading checkpoint shards:  40%|████      | 2/5 [00:01<00:02,  1.31it/s]
+Loading checkpoint shards:  40%|████      | 2/5 [00:01<00:02,  1.32it/s]
+Loading checkpoint shards:  40%|████      | 2/5 [00:01<00:02,  1.32it/s]
+Loading checkpoint shards:  60%|██████    | 3/5 [00:02<00:01,  1.32it/s]
+Loading checkpoint shards:  60%|██████    | 3/5 [00:02<00:01,  1.32it/s]
+Loading checkpoint shards:  60%|██████    | 3/5 [00:02<00:01,  1.33it/s]
+Loading checkpoint shards:  80%|████████  | 4/5 [00:02<00:00,  1.43it/s]
+Loading checkpoint shards:  80%|████████  | 4/5 [00:02<00:00,  1.44it/s]
+Loading checkpoint shards:  80%|████████  | 4/5 [00:02<00:00,  1.45it/s]
+Loading checkpoint shards: 100%|██████████| 5/5 [00:03<00:00,  1.91it/s]
+Loading checkpoint shards: 100%|██████████| 5/5 [00:03<00:00,  1.61it/s]
+
+Loading checkpoint shards: 100%|██████████| 5/5 [00:03<00:00,  1.91it/s]
+Loading checkpoint shards: 100%|██████████| 5/5 [00:03<00:00,  1.61it/s]
+
+Loading checkpoint shards: 100%|██████████| 5/5 [00:03<00:00,  1.92it/s]
+Loading checkpoint shards: 100%|██████████| 5/5 [00:03<00:00,  1.62it/s]
+[2025-08-27 20:14:28] WARNING task.py:116: gsm8k-enforced-no-sampling-threeway: No `until` specified in `generation_kwargs`! Defaulting to the fewshot_delimiter='\n\n'
+[2025-08-27 20:14:28] WARNING task.py:116: gsm8k-enforced-no-sampling-threeway: No `until` specified in `generation_kwargs`! Defaulting to the fewshot_delimiter='\n\n'
+[2025-08-27 20:14:28] WARNING task.py:116: gsm8k-enforced-no-sampling-threeway: No `until` specified in `generation_kwargs`! Defaulting to the fewshot_delimiter='\n\n'
+
+Generating train split:   0%|          | 0/15 [00:00<?, ? examples/s]
+Generating train split: 100%|██████████| 15/15 [00:00<00:00, 2898.35 examples/s]
+[2025-08-27 20:14:31] INFO evaluator.py:305: gsm8k-enforced-no-sampling-threeway: Using gen_kwargs: {'do_sample': False, 'temperature': 0.0, 'max_new_tokens': 1024, 'grammar_file_path': './lm_eval/tasks/gsm8k/gsm8k_grammar.json', 'grammar_type': 'json', 'decoding_record_file_path': 'output/gsm8k/gsm8k-enforced-no-sampling-threeway/seed-0/Qwen__Qwen3-8B/decoding_history.jsonl', 'until': ['\n\n']}
+[2025-08-27 20:14:31] INFO task.py:434: Building contexts for gsm8k-enforced-no-sampling-threeway on rank 0...
+
+  0%|          | 0/5 [00:00<?, ?it/s]
+100%|██████████| 5/5 [00:00<00:00, 918.47it/s]
+[2025-08-27 20:14:31] INFO evaluator.py:305: gsm8k-enforced-no-sampling-threeway: Using gen_kwargs: {'do_sample': False, 'temperature': 0.0, 'max_new_tokens': 1024, 'grammar_file_path': './lm_eval/tasks/gsm8k/gsm8k_grammar.json', 'grammar_type': 'json', 'decoding_record_file_path': 'output/gsm8k/gsm8k-enforced-no-sampling-threeway/seed-0/Qwen__Qwen3-8B/decoding_history.jsonl', 'until': ['\n\n']}
+[2025-08-27 20:14:31] INFO task.py:434: Building contexts for gsm8k-enforced-no-sampling-threeway on rank 2...
+
+  0%|          | 0/5 [00:00<?, ?it/s]
+100%|██████████| 5/5 [00:00<00:00, 864.13it/s]
+[2025-08-27 20:14:31] INFO evaluator.py:305: gsm8k-enforced-no-sampling-threeway: Using gen_kwargs: {'do_sample': False, 'temperature': 0.0, 'max_new_tokens': 1024, 'grammar_file_path': './lm_eval/tasks/gsm8k/gsm8k_grammar.json', 'grammar_type': 'json', 'decoding_record_file_path': 'output/gsm8k/gsm8k-enforced-no-sampling-threeway/seed-0/Qwen__Qwen3-8B/decoding_history.jsonl', 'until': ['\n\n']}
+[2025-08-27 20:14:31] INFO task.py:434: Building contexts for gsm8k-enforced-no-sampling-threeway on rank 1...
+
+  0%|          | 0/5 [00:00<?, ?it/s]
+100%|██████████| 5/5 [00:00<00:00, 895.15it/s]
+[2025-08-27 20:14:31] INFO evaluator.py:574: Running generate_until requests
+Passed argument batch_size = auto. Detecting largest batch size
+[2025-08-27 20:14:31] INFO evaluator.py:574: Running generate_until requests
+[2025-08-27 20:14:31] INFO evaluator.py:574: Running generate_until requests
+Passed argument batch_size = auto. Detecting largest batch size
+
+Running generate_until requests:   0%|          | 0/5 [00:00<?, ?it/s]Passed argument batch_size = auto. Detecting largest batch size
+Determined Largest batch size: 1
+Determined Largest batch size: 1
+Determined Largest batch size: 1
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Both `max_new_tokens` (=1024) and `max_length`(=733) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=1024) and `max_length`(=776) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Both `max_new_tokens` (=1024) and `max_length`(=742) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Both `max_new_tokens` (=1024) and `max_length`(=729) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+
+Running generate_until requests:  20%|██        | 1/5 [19:39<1:18:37, 1179.29s/it]The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Both `max_new_tokens` (=1024) and `max_length`(=741) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+
+Running generate_until requests:  40%|████      | 2/5 [29:47<42:10, 843.64s/it]   The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Both `max_new_tokens` (=1024) and `max_length`(=720) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+
+Running generate_until requests:  60%|██████    | 3/5 [39:56<24:32, 736.44s/it]The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Both `max_new_tokens` (=1024) and `max_length`(=717) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Both `max_new_tokens` (=1024) and `max_length`(=735) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Both `max_new_tokens` (=1024) and `max_length`(=728) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Both `max_new_tokens` (=1024) and `max_length`(=726) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Both `max_new_tokens` (=1024) and `max_length`(=722) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Both `max_new_tokens` (=1024) and `max_length`(=725) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+
+Running generate_until requests:  80%|████████  | 4/5 [3:05:04<1:04:43, 3883.25s/it]The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Both `max_new_tokens` (=1024) and `max_length`(=715) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Both `max_new_tokens` (=1024) and `max_length`(=703) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+/home/jafar/lm-evaluation-harness/env/lib/python3.11/site-packages/torch/distributed/distributed_c10d.py:4807: UserWarning: No device id is provided via `init_process_group` or `barrier `. Using the current device set by the user.
+  warnings.warn(  # warn only once
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Both `max_new_tokens` (=1024) and `max_length`(=720) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+/home/jafar/lm-evaluation-harness/env/lib/python3.11/site-packages/torch/distributed/distributed_c10d.py:4807: UserWarning: No device id is provided via `init_process_group` or `barrier `. Using the current device set by the user.
+  warnings.warn(  # warn only once
+
+Running generate_until requests: 100%|██████████| 5/5 [5:30:14<00:00, 5623.83s/it]
+Running generate_until requests: 100%|██████████| 5/5 [5:30:14<00:00, 3962.84s/it]
+/home/jafar/lm-evaluation-harness/env/lib/python3.11/site-packages/torch/distributed/distributed_c10d.py:4807: UserWarning: No device id is provided via `init_process_group` or `barrier `. Using the current device set by the user.
+  warnings.warn(  # warn only once
+[2025-08-28 01:44:46] INFO evaluation_tracker.py:209: Saving results aggregated
+[2025-08-28 01:44:46] INFO evaluation_tracker.py:298: Saving per-sample results for: gsm8k-enforced-no-sampling-threeway
+hf-structured (pretrained=Qwen/Qwen3-8B), gen_kwargs: (None), limit: None, num_fewshot: None, batch_size: auto
+|               Tasks               |Version|Filter|n-shot|      Metric      |   |Value |   |Stderr|
+|-----------------------------------|------:|------|-----:|------------------|---|-----:|---|-----:|
+|gsm8k-enforced-no-sampling-threeway|      3|none  |     0|grammar_compliance|↑  |0.6667|±  | 0.126|
+|                                   |       |none  |     0|json_answer_match |↑  |0.3333|±  | 0.126|
+|                                   |       |none  |     0|json_validity     |↑  |0.6667|±  | 0.126|
+
+[rank0]:[W828 01:44:47.901037370 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
