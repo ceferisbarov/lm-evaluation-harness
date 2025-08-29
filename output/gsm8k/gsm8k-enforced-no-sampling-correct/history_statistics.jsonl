@@ -1,0 +1,68 @@
+[
+  {
+    "total_steps": 61,
+    "total_interventions": 1,
+    "intervention_rate": 0.01639344262295082,
+    "mean_accepted_ratio": 0.7623179561368376,
+    "mean_top1_prob": 0.8945740798457724,
+    "mean_top1_prob_masked": 0.8895533512667065,
+    "min_accepted_ratio": 6.581718618365627e-06,
+    "max_accepted_ratio": 0.968407750631845,
+    "mean_rank_shift": 0.6910095690230694
+  },
+  {
+    "total_steps": 110,
+    "total_interventions": 2,
+    "intervention_rate": 0.01818181818181818,
+    "mean_accepted_ratio": 0.8716835318220114,
+    "mean_top1_prob": 0.9014268490401182,
+    "mean_top1_prob_masked": 0.8952640736073425,
+    "min_accepted_ratio": 6.581718618365627e-06,
+    "max_accepted_ratio": 0.968407750631845,
+    "mean_rank_shift": 0.38428030303030297
+  },
+  {
+    "total_steps": 89,
+    "total_interventions": 2,
+    "intervention_rate": 0.02247191011235955,
+    "mean_accepted_ratio": 0.8488609633387922,
+    "mean_top1_prob": 0.9111310213469388,
+    "mean_top1_prob_masked": 0.907125455149439,
+    "min_accepted_ratio": 6.581718618365627e-06,
+    "max_accepted_ratio": 0.968407750631845,
+    "mean_rank_shift": 0.41868016179466067
+  },
+  {
+    "total_steps": 182,
+    "total_interventions": 1,
+    "intervention_rate": 0.005494505494505495,
+    "mean_accepted_ratio": 0.904640878287677,
+    "mean_top1_prob": 0.8690018942067911,
+    "mean_top1_prob_masked": 0.8665912024056984,
+    "min_accepted_ratio": 6.581718618365627e-06,
+    "max_accepted_ratio": 0.968407750631845,
+    "mean_rank_shift": 0.14939913887282308
+  },
+  {
+    "total_steps": 110,
+    "total_interventions": 2,
+    "intervention_rate": 0.01818181818181818,
+    "mean_accepted_ratio": 0.8716835318220114,
+    "mean_top1_prob": 0.9014268490401182,
+    "mean_top1_prob_masked": 0.8952640736073425,
+    "min_accepted_ratio": 6.581718618365627e-06,
+    "max_accepted_ratio": 0.968407750631845,
+    "mean_rank_shift": 0.38428030303030297
+  },
+  {
+    "total_steps": 100,
+    "total_interventions": 1,
+    "intervention_rate": 0.01,
+    "mean_accepted_ratio": 0.8523520429654593,
+    "mean_top1_prob": 0.9187853109836578,
+    "mean_top1_prob_masked": 0.9146259130816907,
+    "min_accepted_ratio": 6.581718618365627e-06,
+    "max_accepted_ratio": 0.968407750631845,
+    "mean_rank_shift": 0.5039899771710917
+  }
+]
