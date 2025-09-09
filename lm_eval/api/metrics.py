@@ -405,8 +405,9 @@ def json_validity(
 def grammar_compliance(
     references: list[str],
     predictions: list[str],
-    grammar_file_path: str,
     grammar_type: str,
+    grammar_file_path: str = None,
+    grammar_str: str = None,
     tokenizer: str = None,
 ) -> bool:
     assert len(references) == 1, (
@@ -416,20 +417,24 @@ def grammar_compliance(
         "Currently, we don't support pass@k for JSON schema validation."
     )
 
+    assert grammar_file_path is not None or grammar_str is not None, (
+        "Provide either `grammar_file_path` or `grammar_str`."
+    )
+
     prediction = predictions[0]  # Since predictions is a list of lists
 
-    with open(grammar_file_path, "r") as f:
-        grammar_str = f.read().strip()
+    if grammar_str is None:
+        with open(grammar_file_path, "r") as f:
+            grammar_str = f.read().strip()
 
     if grammar_type == "json":
-        json_schema = json.loads(grammar_str)
         try:
             json_obj = json.loads(prediction.strip().strip("```").strip("json"))
         except json.JSONDecodeError:
             return False
 
         try:
-            schema_conform = schema_conform_with_format_checker(json_obj, json_schema)
+            schema_conform = schema_conform_with_format_checker(json_obj, grammar_str)
         except Exception as e:
             eval_logger.error(f"Error: {e}")
             return False
